@@ -51,19 +51,11 @@ class Category
         $this->affiliates = new ArrayCollection();
     }
 
-    // setters and getters
-
-    /**
-     * @return int
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): ?string
     {
         return $this->name;
@@ -76,9 +68,6 @@ class Category
         return $this;
     }
 
-    /**
-     * @return Job[]|ArrayCollection
-     */
     public function getJobs()
     {
         return $this->jobs;
@@ -100,17 +89,11 @@ class Category
         return $this;
     }
 
-    /**
-     * @return Affiliate[]|ArrayCollection
-     */
     public function getAffiliates()
     {
         return $this->affiliates;
     }
 
-    /**
-     * @param Affiliate $affiliate
-     */
     public function addAffiliate($affiliate): self
     {
         if (!$this->affiliates->contains($affiliate)) {
@@ -120,9 +103,6 @@ class Category
         return $this;
     }
 
-    /**
-     * @param Affiliate $affiliate
-     */
     public function removeAffiliate($affiliate): self
     {
         $this->affiliates->removeElement($affiliate);

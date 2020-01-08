@@ -69,17 +69,11 @@ class Affiliate
         $this->categories = new ArrayCollection();
     }
 
-    /**
-     * @return int
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return string
-     */
     public function getUrl(): ?string
     {
         return $this->url;
@@ -92,9 +86,6 @@ class Affiliate
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getEmail(): ?string
     {
         return $this->email;
@@ -107,9 +98,6 @@ class Affiliate
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getToken(): ?string
     {
         return $this->token;
@@ -122,9 +110,6 @@ class Affiliate
         return $this;
     }
 
-    /**
-     * @return bool
-     */
     public function isActive(): ?bool
     {
         return $this->active;
@@ -137,17 +122,11 @@ class Affiliate
         return $this;
     }
 
-    /**
-     * @return \DateTime
-     */
     public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
 
-    /**
-     * @return Category[]|ArrayCollection
-     */
     public function getCategories()
     {
         return $this->categories;

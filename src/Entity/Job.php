@@ -11,8 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Job
 {
-    // properties
-
     /**
      * @var int
      *
@@ -135,19 +133,11 @@ class Job
      */
     private $category;
 
-    // setters and getters
-
-    /**
-     * @return int
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return string
-     */
     public function getType(): ?string
     {
         return $this->type;
@@ -160,9 +150,6 @@ class Job
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getCompany(): ?string
     {
         return $this->company;
@@ -199,9 +186,6 @@ class Job
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getPosition(): ?string
     {
         return $this->position;
@@ -214,9 +198,6 @@ class Job
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getLocation(): ?string
     {
         return $this->location;
@@ -229,9 +210,6 @@ class Job
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getDescription(): ?string
     {
         return $this->description;
@@ -244,9 +222,6 @@ class Job
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getHowToApply(): ?string
     {
         return $this->howToApply;
@@ -259,9 +234,6 @@ class Job
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getToken(): ?string
     {
         return $this->token;
@@ -274,9 +246,6 @@ class Job
         return $this;
     }
 
-    /**
-     * @return bool
-     */
     public function isPublic(): ?bool
     {
         return $this->public;
@@ -289,9 +258,6 @@ class Job
         return $this;
     }
 
-    /**
-     * @return bool
-     */
     public function isActivated(): ?bool
     {
         return $this->activated;
@@ -304,9 +270,6 @@ class Job
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getEmail(): ?string
     {
         return $this->email;
@@ -319,9 +282,6 @@ class Job
         return $this;
     }
 
-    /**
-     * @return \DateTime
-     */
     public function getExpiresAt(): ?\DateTime
     {
         return $this->expiresAt;
@@ -334,25 +294,16 @@ class Job
         return $this;
     }
 
-    /**
-     * @return \DateTime
-     */
     public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
 
-    /**
-     * @return \DateTime
-     */
     public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
     }
 
-    /**
-     * @return Category
-     */
     public function getCategory(): ?Category
     {
         return $this->category;
