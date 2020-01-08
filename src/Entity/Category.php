@@ -56,7 +56,7 @@ class Category
     /**
      * @return int
      */
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -64,17 +64,12 @@ class Category
     /**
      * @return string
      */
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName(string $name) : self
+    public function setName(string $name): self
     {
         $this->name = $name;
 
@@ -89,12 +84,7 @@ class Category
         return $this->jobs;
     }
 
-    /**
-     * @param Job $job
-     *
-     * @return self
-     */
-    public function addJob(Job $job) : self
+    public function addJob(Job $job): self
     {
         if (!$this->jobs->contains($job)) {
             $this->jobs->add($job);
@@ -103,12 +93,7 @@ class Category
         return $this;
     }
 
-    /**
-     * @param Job $job
-     *
-     * @return self
-     */
-    public function removeJob(Job $job) : self
+    public function removeJob(Job $job): self
     {
         $this->jobs->removeElement($job);
 
@@ -125,10 +110,8 @@ class Category
 
     /**
      * @param Affiliate $affiliate
-     *
-     * @return self
      */
-    public function addAffiliate($affiliate) : self
+    public function addAffiliate($affiliate): self
     {
         if (!$this->affiliates->contains($affiliate)) {
             $this->affiliates->add($affiliate);
@@ -139,10 +122,8 @@ class Category
 
     /**
      * @param Affiliate $affiliate
-     *
-     * @return self
      */
-    public function removeAffiliate($affiliate) : self
+    public function removeAffiliate($affiliate): self
     {
         $this->affiliates->removeElement($affiliate);
 

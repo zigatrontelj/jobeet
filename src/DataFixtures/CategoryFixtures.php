@@ -8,7 +8,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class CategoryFixtures extends Fixture
 {
-    public function load(ObjectManager $manager) : void
+    public function load(ObjectManager $manager): void
     {
         $designCategory = new Category();
         $designCategory->setName('Design');
