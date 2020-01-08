@@ -8,12 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity()
  * @ORM\Table(name="affiliates")
- * * @ORM\HasLifecycleCallbacks()
+ * @ORM\HasLifecycleCallbacks()
  */
 class Affiliate
 {
-    // properties
-
     /**
      * @var int
      *
@@ -66,18 +64,10 @@ class Affiliate
      */
     private $categories;
 
-
-
     public function __construct()
     {
         $this->categories = new ArrayCollection();
     }
-
-
-
-    // setters and getters
-
-
 
     /**
      * @return int
@@ -208,8 +198,6 @@ class Affiliate
 
         return $this;
     }
-
-    //Lifecycle Callbacks
 
     /**
      * @ORM\PrePersist
