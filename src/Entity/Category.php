@@ -11,8 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Category
 {
-    // properties
-
     /**
      * @var int
      *
@@ -42,8 +40,6 @@ class Category
      * @ORM\ManyToMany(targetEntity="Affiliate", mappedBy="categories")
      */
     private $affiliates;
-
-    // constructor
 
     public function __construct()
     {

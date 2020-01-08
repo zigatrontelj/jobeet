@@ -316,8 +316,6 @@ class Job
         return $this;
     }
 
-    //Lifecycle Callbacks
-
     /**
      * @ORM\PrePersist()
      */
