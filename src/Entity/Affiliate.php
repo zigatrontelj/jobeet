@@ -8,12 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity()
  * @ORM\Table(name="affiliates")
- * * @ORM\HasLifecycleCallbacks()
+ * @ORM\HasLifecycleCallbacks()
  */
 class Affiliate
 {
-    // properties
-
     /**
      * @var int
      *
@@ -66,129 +64,75 @@ class Affiliate
      */
     private $categories;
 
-
-
     public function __construct()
     {
         $this->categories = new ArrayCollection();
     }
 
-
-
-    // setters and getters
-
-
-
-    /**
-     * @return int
-     */
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return string
-     */
-    public function getUrl() : ?string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    /**
-     * @param string $url
-     *
-     * @return self
-     */
-    public function setUrl(string $url) : self
+    public function setUrl(string $url): self
     {
         $this->url = $url;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getEmail() : ?string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    /**
-     * @param string $email
-     *
-     * @return self
-     */
-    public function setEmail(string $email) : self
+    public function setEmail(string $email): self
     {
         $this->email = $email;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getToken() : ?string
+    public function getToken(): ?string
     {
         return $this->token;
     }
 
-    /**
-     * @param string|null $token
-     *
-     * @return self
-     */
-    public function setToken(?string $token) : self
+    public function setToken(?string $token): self
     {
         $this->token = $token;
 
         return $this;
     }
 
-    /**
-     * @return bool
-     */
-    public function isActive() : ?bool
+    public function isActive(): ?bool
     {
         return $this->active;
     }
 
-    /**
-     * @param bool $active
-     *
-     * @return self
-     */
-    public function setActive(bool $active) : self
+    public function setActive(bool $active): self
     {
         $this->active = $active;
 
         return $this;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getCreatedAt() : ?\DateTime
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
 
-    /**
-     * @return Category[]|ArrayCollection
-     */
     public function getCategories()
     {
         return $this->categories;
     }
 
-    /**
-     * @param Category $category
-     *
-     * @return self
-     */
-    public function addCategory(Category $category) : self
+    public function addCategory(Category $category): self
     {
         if (!$this->categories->contains($category)) {
             $this->categories->add($category);
@@ -197,19 +141,12 @@ class Affiliate
         return $this;
     }
 
-    /**
-     * @param Category $category
-     *
-     * @return self
-     */
-    public function removeCategory(Category $category) : self
+    public function removeCategory(Category $category): self
     {
         $this->categories->removeElement($category);
 
         return $this;
     }
-
-    //Lifecycle Callbacks
 
     /**
      * @ORM\PrePersist
@@ -218,5 +155,4 @@ class Affiliate
     {
         $this->createdAt = new \DateTime();
     }
-
 }

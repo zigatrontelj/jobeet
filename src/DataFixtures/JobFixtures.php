@@ -9,12 +9,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class JobFixtures extends Fixture implements DependentFixtureInterface
 {
-    /**
-     * @param ObjectManager $manager
-     *
-     * @return void
-     */
-    public function load(ObjectManager $manager) : void
+    public function load(ObjectManager $manager): void
     {
         $jobSensioLabs = new Job();
         $jobSensioLabs->setCategory($manager->merge($this->getReference('category-programming')));
@@ -54,9 +49,6 @@ class JobFixtures extends Fixture implements DependentFixtureInterface
         $manager->flush();
     }
 
-    /**
-     * @return array
-     */
     public function getDependencies(): array
     {
         return [
