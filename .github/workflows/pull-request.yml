@@ -16,6 +16,8 @@ jobs:
 
       - name: Run php-cs-fixer
         uses: docker://oskarstark/php-cs-fixer-ga
+        with:
+          args: --config=.php_cs --diff --dry-run -v
 
       - name: Commit changed files
         uses: stefanzweifel/git-auto-commit-action@v2.5.0
