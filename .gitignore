@@ -1,6 +1,6 @@
-###> php-cs-fixer ###
-/.idea
-###< php-cs-fixer ###
+###> idea folder ###
+.idea/*
+###< idea folder ###
 
 ###> php-cs-fixer ###
 .php_cs.cache
