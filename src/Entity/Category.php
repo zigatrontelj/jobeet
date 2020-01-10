@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\String\Slugger\AsciiSlugger;
+use function Symfony\Component\String\u;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
@@ -41,6 +43,13 @@ class Category
      */
     private $affiliates;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=128, unique=true)
+     */
+    private $slug;
+
     public function __construct()
     {
         $this->jobs = new ArrayCollection();
@@ -60,8 +69,15 @@ class Category
     public function setName(string $name): self
     {
         $this->name = $name;
+        $slugger = new AsciiSlugger();
+        $this->slug = u($slugger->slug($name))->lower();
 
         return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
     }
 
     public function getJobs()
