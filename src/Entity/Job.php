@@ -172,12 +172,18 @@ class Job
         return $this;
     }
 
-    public function getLogo(): ?string
+    /**
+     * @return string|UploadedFile|null
+     */
+    public function getLogo()
     {
         return $this->logo;
     }
 
-    public function setLogo(?string $logo): self
+    /**
+     * @param string|UploadedFile|null $logo
+     */
+    public function setLogo($logo): self
     {
         $this->logo = $logo;
 
