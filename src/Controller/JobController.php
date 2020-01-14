@@ -52,11 +52,33 @@ class JobController extends AbstractController
      * @Route("/job/create", name="job.create", methods={"GET", "POST"})
      *
      * @return RedirectResponse|Response
+     * @Route("/job/create", name="job.create", methods={"GET", "POST"})
+     *
+     * @return RedirectResponse|Response
      */
     public function create(Request $request, EntityManagerInterface $em, FileUploader $fileUploader): Response
     {
         $job = new Job();
         $form = $this->createForm(JobType::class, $job);
+        $form->handleRequest($request);
+        if (!$form->isSubmitted() || !$form->isValid()) {
+            /** @var UploadedFile|null $logoFile */
+            $logoFile = $form->get('logo')->getData();
+
+            if ($logoFile instanceof UploadedFile) {
+                $fileName = $fileUploader->upload($logoFile);
+
+                $job->setLogo($fileName);
+            }
+
+            $em->persist($job);
+            $em->flush();
+
+            return $this->redirectToRoute(
+                'job.preview',
+                ['token' => $job->getToken()]
+            );
+        }
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -145,7 +167,6 @@ class JobController extends AbstractController
     {
         $form = $this->createDeleteForm($job);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em->remove($job);
             $em->flush();
@@ -163,7 +184,6 @@ class JobController extends AbstractController
     {
         $form = $this->createPublishForm($job);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $job->setActivated(true);
 

@@ -14,6 +14,9 @@ class JobUploadListener
     /** @var FileUploader */
     private $uploader;
 
+    /**
+     * JobUploadListener constructor.
+     */
     public function __construct(FileUploader $uploader)
     {
         $this->uploader = $uploader;
@@ -68,6 +71,7 @@ class JobUploadListener
         if (!$entity instanceof Job) {
             return;
         }
+
         if ($fileName = $entity->getLogo()) {
             $entity->setLogo(new File($this->uploader->getTargetDirectory().'/'.$fileName));
         }
@@ -81,6 +85,7 @@ class JobUploadListener
         if (!$entity instanceof Job) {
             return;
         }
+
         $logoFile = $entity->getLogo();
         if ($logoFile instanceof File) {
             $entity->setLogo($logoFile->getFilename());
