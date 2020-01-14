@@ -14,9 +14,6 @@ class JobUploadListener
     /** @var FileUploader */
     private $uploader;
 
-    /**
-     * JobUploadListener constructor.
-     */
     public function __construct(FileUploader $uploader)
     {
         $this->uploader = $uploader;
@@ -25,12 +22,14 @@ class JobUploadListener
     public function prePersist(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
+
         $this->uploadFile($entity);
     }
 
     public function preUpdate(PreUpdateEventArgs $args)
     {
         $entity = $args->getEntity();
+
         $this->uploadFile($entity);
         $this->fileToString($entity);
     }
@@ -52,9 +51,11 @@ class JobUploadListener
         }
 
         $logoFile = $entity->getLogo();
+
         // only upload new files
         if ($logoFile instanceof UploadedFile) {
             $fileName = $this->uploader->upload($logoFile);
+
             $entity->setLogo($fileName);
         }
     }
@@ -67,7 +68,6 @@ class JobUploadListener
         if (!$entity instanceof Job) {
             return;
         }
-
         if ($fileName = $entity->getLogo()) {
             $entity->setLogo(new File($this->uploader->getTargetDirectory().'/'.$fileName));
         }
@@ -81,7 +81,6 @@ class JobUploadListener
         if (!$entity instanceof Job) {
             return;
         }
-
         $logoFile = $entity->getLogo();
         if ($logoFile instanceof File) {
             $entity->setLogo($logoFile->getFilename());

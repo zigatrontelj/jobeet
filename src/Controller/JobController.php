@@ -58,7 +58,8 @@ class JobController extends AbstractController
         $job = new Job();
         $form = $this->createForm(JobType::class, $job);
         $form->handleRequest($request);
-        if (!$form->isSubmitted() || !$form->isValid()) {
+
+        if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile|null $logoFile */
             $logoFile = $form->get('logo')->getData();
 
@@ -144,6 +145,7 @@ class JobController extends AbstractController
     {
         $form = $this->createDeleteForm($job);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em->remove($job);
             $em->flush();
@@ -161,6 +163,7 @@ class JobController extends AbstractController
     {
         $form = $this->createPublishForm($job);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $job->setActivated(true);
 
