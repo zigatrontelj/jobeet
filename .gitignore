@@ -1,3 +1,7 @@
+###> picture uploads ###
+/public/uploads/*
+###< picture uploads ###
+
 ###> idea folder ###
 .idea/*
 ###< idea folder ###
