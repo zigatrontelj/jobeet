@@ -13,8 +13,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoryController extends AbstractController
 {
     /**
-     * Lists all categories entities.
-     *
      * @Route("/admin/categories", name="admin.category.list", methods="GET")
      */
     public function list(EntityManagerInterface $em): Response
@@ -27,8 +25,6 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * Create category.
-     *
      * @Route("/admin/category/create", name="admin.category.create", methods="GET|POST")
      */
     public function create(Request $request, EntityManagerInterface $em): Response
@@ -36,7 +32,6 @@ class CategoryController extends AbstractController
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($category);
             $em->flush();
@@ -50,15 +45,12 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * Edit category.
-     *
      * @Route("/admin/category/{id}/edit", name="admin.category.edit", methods="GET|POST", requirements={"id" = "\d+"})
      */
     public function edit(Request $request, EntityManagerInterface $em, Category $category): Response
     {
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
 
@@ -72,8 +64,6 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * Delete category.
-     *
      * @Route("/admin/category/{id}/delete", name="admin.category.delete", methods="DELETE", requirements={"id" = "\d+"})
      */
     public function delete(Request $request, EntityManagerInterface $em, Category $category): Response

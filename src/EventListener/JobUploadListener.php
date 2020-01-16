@@ -14,9 +14,6 @@ class JobUploadListener
     /** @var FileUploader */
     private $uploader;
 
-    /**
-     * JobUploadListener constructor.
-     */
     public function __construct(FileUploader $uploader)
     {
         $this->uploader = $uploader;

@@ -14,8 +14,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class JobController extends AbstractController
 {
     /**
-     * Lists all jobs entities.
-     *
      * @Route("/admin/jobs/{page}",
      *     name="admin.job.list",
      *     methods="GET",
@@ -41,8 +39,6 @@ class JobController extends AbstractController
     }
 
     /**
-     * Create job.
-     *
      * @Route("/admin/job/create", name="admin.job.create", methods="GET|POST")
      */
     public function create(Request $request, EntityManagerInterface $em): Response
@@ -64,8 +60,6 @@ class JobController extends AbstractController
     }
 
     /**
-     * Edit job.
-     *
      * @Route("/admin/job/{id}/edit", name="admin.job.edit", methods="GET|POST", requirements={"id" = "\d+"})
      */
     public function edit(Request $request, EntityManagerInterface $em, Job $job): Response
@@ -85,8 +79,6 @@ class JobController extends AbstractController
     }
 
     /**
-     * Delete job.
-     *
      * @Route("/admin/job/{id}/delete", name="admin.job.delete", methods="DELETE", requirements={"id" = "\d+"})
      */
     public function delete(Request $request, EntityManagerInterface $em, Job $job): Response
