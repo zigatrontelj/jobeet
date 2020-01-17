@@ -7,6 +7,11 @@ use Doctrine\ORM\EntityRepository;
 
 class AffiliateRepository extends EntityRepository
 {
+    /**
+     * @param string $token
+     * @return Affiliate|null
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
     public function findOneActiveByToken(string $token): ?Affiliate
     {
         return $this->createQueryBuilder('a')
